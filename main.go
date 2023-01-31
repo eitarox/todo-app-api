@@ -3,12 +3,16 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/eitarox/todo-app-api/config"
-	"golang.org/x/sync/errgroup"
 	"log"
 	"net"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
+	"time"
+
+	"github.com/eitarox/todo-app-api/config"
+	"golang.org/x/sync/errgroup"
 )
 
 func main() {
@@ -19,6 +23,8 @@ func main() {
 }
 
 func run(ctx context.Context) error {
+	ctx, stop := signal.NotifyContext(ctx, os.Interrupt, syscall.SIGTERM)
+	defer stop()
 	cfg, err := config.New()
 	if err != nil {
 		return err
@@ -31,6 +37,7 @@ func run(ctx context.Context) error {
 	log.Printf("start with: %v", url)
 	s := &http.Server{
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			time.Sleep(5 * time.Second)
 			fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
 		}),
 	}
