@@ -17,7 +17,7 @@ type TaskStore struct {
 	Tasks  map[entity.TaskID]*entity.Task
 }
 
-func (ts TaskStore) Add(t *entity.Task) (entity.TaskID, error) {
+func (ts *TaskStore) Add(t *entity.Task) (entity.TaskID, error) {
 	ts.LastId++
 	t.ID = ts.LastId
 	ts.Tasks[t.ID] = t
