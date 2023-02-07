@@ -9,7 +9,7 @@ import (
 	"github.com/eitarox/todo-app-api/entity"
 	"github.com/eitarox/todo-app-api/store"
 	"github.com/eitarox/todo-app-api/testutil"
-	"github.com/go-playground/validator"
+	"github.com/go-playground/validator/v10"
 )
 
 func TestAddTask(t *testing.T) {
