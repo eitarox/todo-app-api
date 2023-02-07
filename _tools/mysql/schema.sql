@@ -1,0 +1,25 @@
+CREATE TABLE `user`
+(
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) NOT NULL,
+  `password` VARCHAR(80) NOT NULL,
+  `role` VARCHAR(20) NOT NULL,
+  `created` DATETIME(6) NOT NULL,
+  `modified` DATETIME(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uix_name` (`name`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='ユーザ';
+
+CREATE TABLE `task`
+(
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT UNSIGNED NOT NULL,
+  `title` VARCHAR(128) NOT NULL,
+  `status` VARCHAR(20) NOT NULL,
+  `created` DATETIME(6) NOT NULL,
+  `modified` DATETIME(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_task_user_id`
+      FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+          ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='タスク';
