@@ -50,7 +50,7 @@ func TestAddTask(t *testing.T) {
 			)
 
 			sut := AddTask{
-				Store: &store.TaskStore{
+				Repo: &store.TaskStore{
 					Tasks: map[entity.TaskID]*entity.Task{},
 				},
 				Validator: validator.New(),

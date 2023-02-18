@@ -39,7 +39,7 @@ func TestListTask(t *testing.T) {
 			)
 
 			sut := ListTask{
-				Store: &store.TaskStore{
+				Repo: &store.TaskStore{
 					Tasks: map[entity.TaskID]*entity.Task{
 						1: {
 							ID:     1,
