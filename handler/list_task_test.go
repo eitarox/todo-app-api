@@ -1,12 +1,13 @@
 package handler
 
 import (
-	"github.com/eitarox/todo-app-api/entity"
-	"github.com/eitarox/todo-app-api/store"
-	"github.com/eitarox/todo-app-api/testutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/eitarox/todo-app-api/entity"
+	"github.com/eitarox/todo-app-api/store"
+	"github.com/eitarox/todo-app-api/testutil"
 )
 
 func TestListTask(t *testing.T) {

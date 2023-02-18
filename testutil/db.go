@@ -24,7 +24,6 @@ func OpenDBForTest(t *testing.T) *sqlx.DB {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { _ = db.Close() },
-	)
+	t.Cleanup(func() { _ = db.Close() })
 	return sqlx.NewDb(db, "mysql")
 }
