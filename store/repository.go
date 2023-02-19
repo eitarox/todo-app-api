@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/eitarox/todo-app-api/clock"
 	"time"
 
+	"github.com/eitarox/todo-app-api/clock"
 	"github.com/eitarox/todo-app-api/config"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
